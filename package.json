@@ -1,0 +1,23 @@
+{
+  "name": "sshy",
+  "productName": "SSHY",
+  "version": "1.0.0",
+  "description": "My Electron application description",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "watch": "nodemon --exec 'electron .'"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Levente Otta",
+    "email": "leventeotta@gmail.com"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@grafite/helpers": "^1.0.0",
+    "electron": "7.1.9",
+    "nodemon": "^2.0.2",
+    "recursive-readdir": "^2.2.2"
+  }
+}
