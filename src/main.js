@@ -2,6 +2,7 @@ const {app, BrowserWindow, ipcMain} = require('electron');
 const path = require('path');
 const {getFiles} = require('./Services/ReadKeys');
 const {copy} = require('./Services/CopyContent');
+const newKeyModal = require('./Pages/NewKeyModal/main');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -37,14 +38,6 @@ const createWindow = () => {
         // when you should delete the corresponding element.
         mainWindow = null;
     });
-
-    ipcMain.on('hey-backend-please-send-me-ssh-keys', (event, args) => {
-        event.reply('there-are-your-ssh-keys-your-welcome', getFiles);
-    });
-
-    ipcMain.on('hey-backend-please-copy-the-content-of-this-file', (event, args) => {
-        copy(args);
-    });
 };
 
 // This method will be called when Electron has finished
@@ -71,3 +64,16 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+ipcMain.on('hey-backend-please-send-me-ssh-keys', event => {
+    console.log(getFiles);
+    event.reply('there-are-your-ssh-keys-your-welcome', getFiles);
+});
+
+ipcMain.on('hey-backend-please-copy-the-content-of-this-file', (event, args) => {
+    copy(args);
+});
+
+ipcMain.on('hey-backend-please-open-the-new-key-modal', () => {
+    newKeyModal.createModal(mainWindow);
+});

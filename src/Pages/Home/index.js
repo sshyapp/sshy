@@ -53,4 +53,8 @@ document.getElementById('refresh-files').addEventListener('click', requestKeys);
 
 ipcRenderer.on('there-are-your-ssh-keys-your-welcome', (event, args) => renderKeys(args));
 
+document.getElementById('new-key-modal').addEventListener('click', () => {
+    ipcRenderer.send('hey-backend-please-open-the-new-key-modal');
+});
+
 (() => requestKeys())();
