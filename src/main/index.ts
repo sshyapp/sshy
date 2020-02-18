@@ -1,4 +1,5 @@
-import {app, BrowserWindow} from 'electron';
+import {app, BrowserWindow, ipcMain} from 'electron';
+import SshKey from "./services/SshKey";
 
 declare const MAIN_WINDOW_WEBPACK_ENTRY: any;
 
@@ -15,6 +16,9 @@ const createWindow = () => {
         minWidth: 400,
         show: false,
         width: 1000,
+        webPreferences: {
+            nodeIntegration: true
+        },
     });
 
     mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
@@ -43,3 +47,8 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+ipcMain.on('hey-backend-please-send-me-ssh-keys', event => {
+    console.log(SshKey.collect());
+    // event.reply()
+})
