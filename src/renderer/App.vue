@@ -1,15 +1,23 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <main>
+            <router-view></router-view>
+        </main>
+        <AppFooter></AppFooter>
+    </div>
 </template>
 
 <script>
-  export default {
-    name: 'sshy'
-  }
+    import AppFooter from './components/Footer'
+
+    export default {
+        name: 'sshy',
+        components: {
+            AppFooter
+        }
+    }
 </script>
 
-<style>
-  /* CSS */
+<style lang="scss">
+    @import 'assets/sass/app';
 </style>

@@ -1,0 +1,33 @@
+@import 'bootstrap';
+
+html, body, #app {
+  min-height: 100vh;
+}
+
+body {
+  font-family: -apple-system, $font-family-sans-serif;
+  background-color: $body-bg;
+  color: aliceblue;
+}
+
+main {
+  padding-bottom: 60px;
+}
+
+.list-group-item {
+  &:first-child {
+    @include border-top-radius(0);
+  }
+
+  &:last-child {
+    @include border-bottom-radius(0);
+  }
+}
+
+button.btn {
+  color: $text-color;
+
+  &:hover {
+    color: $text-color;
+  }
+}
